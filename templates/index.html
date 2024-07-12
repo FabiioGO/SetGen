@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setlist Generator</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+      function validateForm() {
+        var songInput = document.getElementById('song');
+        var dancersInput = document.getElementById('dancers');
+
+        if (songInput.value.trim() === '' && dancersInput.value.trim() === '') {
+          return true; // Allow form submission without validation
+        }
+
+        if (songInput.value.trim() === '') {
+          showError('Please enter a song.');
+          return false;
+        }
+
+        if (dancersInput.value.trim() === '') {
+          showError('Please enter at least one dancer.');
+          return false;
+        }
+
+        var dancerNames = dancersInput.value.split(',');
+        for (var i = 0; i < dancerNames.length; i++) {
+          if (dancerNames[i].trim() === '') {
+            showError('Please enter valid dancer names.');
+            return false;
+          }
+        }
+
+        return true;
+      }
+
+      function showError(errorMessage) {
+        var errorElement = document.getElementById('error');
+        errorElement.innerHTML = errorMessage;
+        errorElement.style.display = 'block';
+
+        setTimeout(function () {
+          errorElement.innerHTML = ''; // Clear the error message
+          errorElement.style.display = 'none'; // Hide the error message after 3 seconds
+        }, 3000);
+      }
+
+      function showSuccess(successMessage) {
+        var successElement = document.getElementById('success');
+        successElement.innerHTML = successMessage;
+        successElement.style.display = 'block';
+
+        setTimeout(function () {
+          successElement.innerHTML = ''; // Clear the success message
+          successElement.style.display = 'none'; // Hide the success message after 3 seconds
+        }, 3000);
+      }
+
+      function deleteSong(song) {
+        if (confirm(`Are you sure you want to delete the song "${song}"?`)) {
+          fetch(`/delete-song/${song}`, { method: 'POST' })
+            .then(response => {
+              if (response.ok) {
+                // Reload the page after successful deletion
+                location.reload();
+              } else {
+                showError('Failed to delete the song.');
+              }
+            })
+            .catch(error => {
+              showError('An error occurred while deleting the song.');
+            });
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header class="nav-bar">
+      <nav>
+        <a class="nav-link" href="/logout">Logout</a>
+      </nav>
+      <div class="github-link">
+        <a href="https://github.com/FabiioGO">
+          <img class="githubImage" alt="Github" src="{{ url_for('static', filename='github-logo.png') }}">
+        </a>
+      </div>
+    </header>           
+    <div class="container">
+      <h1>Setlist Generator - {{ show }}</h1>
+
+      <div class="content">
+        <div class="form-container">
+          <h2 class="form-heading">Add Song</h2>
+          <p>Enter the details for each song in {{ show }}:</p>
+          <form method="POST" onsubmit="return validateForm();">
+            <label for="song" class="form-label">Song:</label>
+            <input type="text" id="song" name="song" required class="form-input">
+            <br>
+            <label for="dancers" class="form-label">Dancers (comma-separated):</label>
+            <input
+              type="text"
+              id="dancers"
+              name="dancers"
+              pattern="[A-Za-z\s]+\s?(,\s?[A-Za-z\s]+)*"
+              title="Please enter a comma-separated list of names (e.g. A, B, C)"
+              class="form-input"
+            >
+            <br>
+            <input type="submit" name="add_song" value="Add Song">
+            <select id="start_song" name="start_song">
+              <option value="">Select Start Song</option>
+              {% for song, dancers in performances.items() %}
+                <option value="{{ song }}">{{ song }}</option>
+              {% endfor %}
+            </select>
+            <select id="end_song" name="end_song">
+              <option value="">Select End Song</option>
+              {% for song, dancers in performances.items() %}
+                <option value="{{ song }}">{{ song }}</option>
+              {% endfor %}
+            </select>
+            <input type="submit" name="generate_setlists" value="Generate Setlists" formnovalidate>
+          </form>
+          <p class="form-error">
+            {% if error %}
+              {{ error }}
+            {% endif %}
+          </p>
+          <p class="form-success">
+            {% if success %}
+              {{ success }}
+            {% endif %}
+          </p>
+        </div>
+        <div class="song-list-container">
+          <h2>All Songs</h2>
+          <div class="song-list">
+            {% if performances %}
+              <ol>
+                {% for song, dancers in performances.items() %}
+                <!-- Inside the for loop where songs are displayed -->
+                <li class="song-item">
+                  <div class="song-details">
+                    <span class="song-title">{{ song }}</span>
+                    <span class="song-separator"></span>
+                    <span class="song-dancers">{{ dancers|join(', ') }}</span>
+                  </div>
+                  <button class="delete-button" onclick="deleteSong('{{ song }}')">Delete</button>
+                </li>
+                {% endfor %}
+              </ol>
+            {% else %}
+              <p>No songs added yet.</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

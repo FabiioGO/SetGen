@@ -1,0 +1,404 @@
+/* Reset styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  padding-top: 80px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+input[type="text"],
+input[type="submit"] {
+  padding: 10px;
+  font-size: 16px;
+}
+
+input[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #333;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+/* Login page specific styles */
+.login-page {
+  background-color: #f4f4f4;
+}
+
+.login-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Create show page specific styles */
+.create-show-page {
+  background-color: #f4f4f4;
+}
+
+.create-show-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation bar */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #333;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+}
+
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #3B3B3B;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0 5px; /* Adjust the margin as needed */
+  min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+  color: #fff;
+}
+
+.github-link {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.githubImage {
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
+}
+
+
+.nav-link:hover {
+  color: #fff;
+  background-color: #1A1A1A;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+/* Form styles */
+.form-container {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.form-heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.form-input {
+  margin-bottom: 10px;
+}
+
+.form-error {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.form-success {
+  color: green;
+  margin-bottom: 10px;
+}
+
+/* Song list styles */
+
+.song-list-container {
+  margin-top: 20px;
+}
+
+.song-list {
+  margin-top: 20px;
+}
+
+.song-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+}
+
+.song-details {
+  flex-grow: 1;
+}
+
+.song-title {
+  font-weight: bold;
+}
+
+.song-dancers {
+  margin-top: 5px;
+  color: #777;
+}
+
+.delete-button {
+  background-color: transparent;
+  color: #ff0000;
+  border: none;
+  justify-content: right;
+  width: auto;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.delete-button:hover {
+  color: #dd0000;
+}
+
+/* Result styles */
+.result-container {
+  margin-top: 20px;
+}
+
+.setlist {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+}
+
+.setlist-title {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.consecutive-dancers {
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form-container {
+  flex-basis: 48%;
+}
+
+.song-list-container {
+  flex-basis: 48%;
+}
+
+.song-details {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.song-separator {
+  width: 2px;
+  height: 16px;
+  background-color: #ddd;
+  margin: 0 10px;
+}
+.setlist-container {
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 20px;
+}
+
+.setlist-title {
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.setlist-songs {
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.consecutive-dancers {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.consecutive-dancers-list {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.consecutive-dancer-item {
+  margin-bottom: 5px;
+}
+
+.no-setlists {
+  margin-top: 20px;
+  font-style: italic;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+/* Clear the float to prevent overlapping */
+.setlist-songs::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.setlist-counter {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+  .setlist-container {
+    display: inline-block;
+    width: 48%;
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  .form-container,
+  .song-list-container {
+    flex-basis: 100%;
+  }
+}

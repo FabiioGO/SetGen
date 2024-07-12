@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Show</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+  <body>
+    <header class="nav-bar">
+      <nav>
+        <ul>
+          <li><a class="nav-link" href="/login">Login</a></li>
+        </ul>
+      </nav>
+      <div class="github-link">
+        <a href="https://github.com/FabiioGO">
+          <img class="githubImage" alt="Github" src="{{ url_for('static', filename='github-logo.png') }}">
+        </a>
+      </div>
+    </header>
+
+    <div class="create-show-page">
+      <div class="create-show-container">
+        <h1>Create Show</h1>
+        <form method="POST">
+          <div class="form-group">
+            <label for="name">Show Name:</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+          <div class="form-group">
+            <button type="submit">Create Show</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
