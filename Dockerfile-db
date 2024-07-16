@@ -1,0 +1,10 @@
+# Use the official PostgreSQL image from the Docker Hub
+FROM postgres:13
+
+# Set environment variables for PostgreSQL
+ENV POSTGRES_DB setlistdb
+ENV POSTGRES_USER user
+ENV POSTGRES_PASSWORD password
+
+# Expose the port PostgreSQL runs on
+EXPOSE 5432

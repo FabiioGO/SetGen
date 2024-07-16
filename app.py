@@ -1,4 +1,5 @@
 # app.py
+from google.cloud.sql.connector import Connector
 from flask import Flask, render_template, request, redirect, jsonify
 from sqlalchemy.exc import SQLAlchemyError
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
@@ -8,8 +9,8 @@ import itertools
 import random
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///setlist.db'
-app.config['SECRET_KEY'] = 'password'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://user:password@db:5432/setlistdb'
+app.config['SECRET_KEY'] = '123'
 db.init_app(app)
 
 # Initialize Flask-Login
@@ -226,4 +227,4 @@ def create_show():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

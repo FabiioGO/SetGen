@@ -6,7 +6,7 @@ db = SQLAlchemy()
 class Show(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), unique=True, nullable=False)
-    password = db.Column(db.String(100), nullable=False)
+    password = db.Column(db.String(200), nullable=False)
 
     songs = db.relationship('Song', backref='show', lazy=True)
 
